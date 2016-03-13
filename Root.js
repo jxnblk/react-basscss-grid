@@ -34,7 +34,10 @@ class Root extends React.Component {
     const sections = breakpoints.map((bp) => ({
       heading: `Col ${bp}`,
       rows: lengths.map((length) => ({
-        cols: Array.from({ length }, (l) => ({ [bp]: 12 / length, children: `<Col ${bp}={${12 / length}} />` }))
+        cols: Array.from({ length }, (l, i) => ({
+          [bp]: 12 / length,
+          children: i === 0 ? (<h3 className='mt0'>Col {bp} {12 / length}</h3>) : `<Col ${bp}={${12 / length}} />`
+        }))
       }))
     }))
 
