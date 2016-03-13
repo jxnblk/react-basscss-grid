@@ -7,7 +7,8 @@
     "prepublish": "mkdir -p dist && babel src --out-dir dist",
     "docs": "static-react docs/Root.js > index.html",
     "start": "npm run docs && onchange 'src/**/*' 'docs/**/*' -- npm run docs",
-    "test": "mocha test --compilers js:babel-register"
+    "test:watch": "mocha --watch --compilers js:babel-register",
+    "test": "mocha --compilers js:babel-register"
   },
   "keywords": [],
   "author": "Brent Jackson",

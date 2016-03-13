@@ -2,6 +2,10 @@
 import React from 'react'
 import classnames from 'classnames'
 
+/**
+ * Grid row component
+ */
+
 const Row = ({
   gutter,
   ...props
