@@ -2,30 +2,40 @@
 import React from 'react'
 import classnames from 'classnames'
 
-export const w = (x) => x ? `col-${x}` : null
-export const col = (x) => (bp) => bp && x ? `${bp}-${w(x)}` : w(x)
+export const w = (n) => n ? `col-${n}` : null
+export const col = (n) => (bp) => bp && n ? `${bp}-${w(n)}` : w(n)
+export const p = (n) => n ? `px${n}` : null
+export const full = (n) => n ? null : 'col-12'
 
-const Col = ({
-  x,
-  sm,
-  md,
-  lg,
-  px,
-  right,
-  ...props
-}) => {
+export const getFloatClassNames = ({ x, sm, md, lg }) => ({
+  'col': x,
+  'sm-col': sm,
+  'md-col': md,
+  'lg-col': lg,
+})
 
-  const cx = classnames(
-    'Col', {
-      'col': x,
-      'sm-col': sm,
-      'md-col': md,
-      'lg-col': lg,
-    },
+export const getWidthClassNames = ({ x, sm, md, lg }) => (
+  [
     col(x)(),
     col(sm)('sm'),
     col(md)('md'),
-    col(lg)('lg'),
+    col(lg)('lg')
+  ].join(' ')
+)
+
+const Col = ({
+  px,
+  right,
+  ...props
+}, { basscssGrid }) => {
+
+  const inlineBlock = basscssGrid ? !basscssGrid.float : true
+
+  const cx = classnames(
+    'Col',
+    inlineBlock ? 'inline-block align-top' : getFloatClassNames(props),
+    full(props.x),
+    getWidthClassNames(props),
     px ? `px${px}` : null
   )
 
@@ -52,6 +62,10 @@ Col.propTypes = {
 
 Col.defaultProps = {
   px: 2
+}
+
+Col.contextTypes = {
+  basscssGrid: React.PropTypes.object
 }
 
 export default Col

@@ -2,34 +2,11 @@
 import React from 'react'
 import TestUtils from 'react-addons-test-utils'
 import expect from 'expect'
-import config from '../src/config'
 import { Style, Row, Col } from '../src'
 import { w } from '../src/Col'
 import { col } from '../src/Col'
 
 const renderer = TestUtils.createRenderer()
-
-describe('config', () => {
-  it('should contain a scale', () => {
-    expect(config.scale).toExist()
-  })
-
-  it('should be an array', () => {
-    expect(config.scale).toBeAn('array')
-  })
-
-  it('should have 5 values', () => {
-    expect(config.scale.length).toEqual(5)
-  })
-
-  it('should have numbers', () => {
-    expect(config.scale[0]).toBeA('number')
-    expect(config.scale[1]).toBeA('number')
-    expect(config.scale[2]).toBeA('number')
-    expect(config.scale[3]).toBeA('number')
-    expect(config.scale[4]).toBeA('number')
-  })
-})
 
 describe('Style', () => {
   let tree
@@ -63,7 +40,7 @@ describe('Row', () => {
   })
 
   it('should have a className', () => {
-    expect(tree.props.className).toEqual('Row')
+    expect(tree.props.className).toEqual('Row mxn2')
   })
 
   context('when children are set', () => {
@@ -135,7 +112,6 @@ describe('col', () => {
 })
 
 describe('Col', () => {
-  const { scale } = config
   let tree
 
   beforeEach(() => {
@@ -148,7 +124,7 @@ describe('Col', () => {
   })
 
   it('should have a className', () => {
-    expect(tree.props.className).toEqual('Col')
+    expect(tree.props.className).toEqual('Col px2')
   })
 
   it('should not have a float class', () => {
@@ -160,7 +136,7 @@ describe('Col', () => {
   })
 
   it('should have a default gutter', () => {
-    expect(tree.props.style.paddingLeft).toEqual(scale[2])
+    expect(tree.props.className).toMatch(/px2/)
   })
 
   context('when x is set', () => {
@@ -174,7 +150,7 @@ describe('Col', () => {
     })
 
     it('should add the corresponding width class', () => {
-      expect(tree.props.className).toEqual('Col col col-6')
+      expect(tree.props.className).toEqual('Col col col-6 px2')
     })
   })
 
@@ -189,7 +165,7 @@ describe('Col', () => {
     })
 
     it('should add the corresponding width class', () => {
-      expect(tree.props.className).toEqual('Col sm-col sm-col-6')
+      expect(tree.props.className).toEqual('Col sm-col sm-col-6 px2')
     })
   })
 })

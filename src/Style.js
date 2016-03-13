@@ -8,6 +8,7 @@ import basscssAlign from '../node_modules/basscss-align/css/align.css'
 const css = [
   '.inline-block{display:inline-block} ',
   basscssGrid,
+  basscssAlign,
   basscssMargin,
   basscssPadding
 ].join(' ')
