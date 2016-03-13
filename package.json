@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "prepublish": "mkdir -p dist && babel src --out-dir dist",
-    "gh-pages": "mkdir -p gh-pages && git subtree push --prefix gh-pages origin gh-pages",
-    "docs": "static-react docs/Root.js > gh-pages/index.html",
+    "gh-pages": "git subtree push --prefix gh-pages origin gh-pages",
+    "docs": "mkdir -p gh-pages && static-react docs/Root.js > gh-pages/index.html",
     "start": "npm run docs && onchange 'src/**/*' 'docs/**/*' -- npm run docs",
     "test:watch": "mocha --watch --compilers js:babel-register",
     "test": "mocha --compilers js:babel-register"
