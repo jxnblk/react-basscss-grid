@@ -45,9 +45,9 @@ class Root extends React.Component {
         <head>
           <title>react-basscss-grid</title>
           <Style />
-          <link rel='stylesheet' href='https://npmcdn.com/basscss-basic/index.css' />
-          <link rel='stylesheet' href='https://npmcdn.com/basscss-typography/css/typography.css' />
-          <link rel='stylesheet' href='https://npmcdn.com/basscss-type-scale/css/type-scale.css' />
+          <link rel='stylesheet' href='https://unpkg.com/basscss-basic/index.css' />
+          <link rel='stylesheet' href='https://unpkg.com/basscss-typography/css/typography.css' />
+          <link rel='stylesheet' href='https://unpkg.com/basscss-type-scale/css/type-scale.css' />
           <style dangerouslySetInnerHTML={{ __html: css }} />
         </head>
         <body className='px3'>
